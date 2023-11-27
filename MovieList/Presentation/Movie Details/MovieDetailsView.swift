@@ -2,20 +2,67 @@
 //  MovieDetailsView.swift
 //  MovieList
 //
-//  Created by Mindstix on 26/11/23.
+//  Created by Paritosh on 26/11/23.
 //
 
 import SwiftUI
 
 struct MovieDetailsView: View {
-    var MovieID : String?
+    var movieID : String?
+    @StateObject var movieDetailsVM = MovieDetailsViewModel(getMovieDetailsServiceObject: MovieDetailsService(requestManager: NetworkManagerService()))
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text(movieDetailsVM.movieDetailsModel?.originalTitle ?? "")
+                        .font(.headline)
+                        .padding(.bottom)
+                    
+                    Text(movieDetailsVM.movieDetailsModel?.overview ?? "")
+                        .font(.headline)
+                        .padding(.bottom)
+                    
+                    AsyncImage(url: URL(string: getImageURL(movieDetailsVM.movieDetailsModel?.posterPath ?? ""))) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .cornerRadius(20)
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 40, height: 40)
+                    }
+                    HStack {
+                        Text("Production Companies:")
+                        Text(movieDetailsVM.movieDetailsModel?.productionCompanies[0].name ?? "")
+                    }
+                    
+                    
+                    HStack() {
+                        Text("Release date:")
+                        Text(movieDetailsVM.movieDetailsModel?.releaseDate ?? "")
+                    }
+                    
+                    HStack {
+                        Text("Ratings:")
+                        Text(String(movieDetailsVM.movieDetailsModel?.voteAverage ?? 0.0))
+                    }
+                }
+            }
+            .task {
+                await movieDetailsVM.getMovieDetais(movieID: movieID ?? "")
+            }
+            .navigationTitle("Movie Details")
+            .padding(.all
+            )
+        }
     }
 }
 
 struct MovieDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailsView(MovieID: "12334")
+        MovieDetailsView(movieID: "670292")
     }
 }

@@ -17,6 +17,7 @@ struct APIURLConstants {
     static let languageKey                     = "language"
     static let pageKey                         = "page"
     static let imageDBURL                      = "https://image.tmdb.org/t/p/w1280"
+    static let movieDetailsPathURL             = "/3/movie/"
     static let authKey                         = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZWFmYmQxODAyYzYyYzA3NDMxOGE2MWU3YWZhOGM3ZiIsInN1YiI6IjY1NjE4ODcyYjIzNGI5MDExYzg1ODcwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0ZN9aUUaiULMDX8iFOlKuYNJP-jzn4b5IkFaVM8p7gI"
 }
 
@@ -32,4 +33,8 @@ struct UIConstants {
 
 func getImageURL(_ posterLink : String) -> String {
     return "\(APIURLConstants.imageDBURL)\(posterLink)"
+}
+
+func getMovieDetailsURL(_ movieID : String) -> String {
+    return "\(APIURLConstants.movieDetailsPathURL)\(movieID)"
 }

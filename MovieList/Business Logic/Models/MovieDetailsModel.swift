@@ -2,7 +2,7 @@
 //  MovieDetailsModel.swift
 //  MovieList
 //
-//  Created by Mindstix on 26/11/23.
+//  Created by Paritosh on 26/11/23.
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import Foundation
 // MARK: - MovieDetailsModel
 struct MovieDetailsModel: Codable {
     let adult: Bool
-    let backdropPath, belongsToCollection: String
+    let backdropPath: String
     let budget: Int
     let genres: [Genre]
     let homepage: String
@@ -31,7 +31,6 @@ struct MovieDetailsModel: Codable {
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
-        case belongsToCollection = "belongs_to_collection"
         case budget, genres, homepage, id
         case imdbID = "imdb_id"
         case originalLanguage = "original_language"

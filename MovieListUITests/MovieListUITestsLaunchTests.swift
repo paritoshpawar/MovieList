@@ -2,7 +2,7 @@
 //  MovieListUITestsLaunchTests.swift
 //  MovieListUITests
 //
-//  Created by Mindstix on 25/11/23.
+//  Created by Paritosh on 25/11/23.
 //
 
 import XCTest

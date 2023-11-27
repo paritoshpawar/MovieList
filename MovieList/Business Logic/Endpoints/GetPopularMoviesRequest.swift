@@ -2,7 +2,7 @@
 //  GetPopularMoviesRequest.swift
 //  MovieList
 //
-//  Created by Mindstix on 26/11/23.
+//  Created by Paritosh on 26/11/23.
 //
 
 import Foundation
@@ -21,7 +21,7 @@ enum GetPopularMoviesRequest : RequestProtocol {
             var params: [String: String] = [:]
 
             if !language.isEmpty { params[APIURLConstants.languageKey] = language }
-            if !language.isEmpty { params[APIURLConstants.pageKey] = page }
+            if !page.isEmpty { params[APIURLConstants.pageKey] = page }
             return params
         }
     }

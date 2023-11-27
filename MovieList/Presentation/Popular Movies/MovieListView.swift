@@ -15,7 +15,7 @@ struct MovieListView: View {
         NavigationStack {
             ScrollView {
                 ForEach(movieListVM.popularMovies?.results ?? []) { item in
-                    NavigationLink(destination: MovieDetailsView(MovieID: "\(item.id)")) {
+                    NavigationLink(destination: MovieDetailsView(movieID: "\(item.id)")) {
                         AsyncImage(url: URL(string: getImageURL(item.posterPath))) { image in
                             image
                                 .resizable()

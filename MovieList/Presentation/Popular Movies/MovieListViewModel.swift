@@ -2,7 +2,7 @@
 //  MovieListViewModel.swift
 //  MovieList
 //
-//  Created by Mindstix on 26/11/23.
+//  Created by Paritosh on 26/11/23.
 //
 
 import Foundation
@@ -13,7 +13,6 @@ final class MovieListViewModel : ObservableObject {
     @Published var movieList : [ResultModel] = []
     @Published var errorMessage: String = ""
     @Published var errorOccured: Bool = false
-    
     @Published var popularMovies : PopularMoviesModel?
     
     // MARK: Get movie service
